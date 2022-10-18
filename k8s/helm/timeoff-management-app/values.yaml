@@ -1,0 +1,56 @@
+# Default values for timeoff-management-app.
+replicaCount: 2
+image:
+  repository: 386235758526.dkr.ecr.us-east-1.amazonaws.com/timeoff-management
+  pullPolicy: Always
+  tag: "0.1.1"
+imagePullSecrets: [{name: regcred}]
+podAnnotations: {}
+service:
+  type: ClusterIP
+  port: 80
+  name: http
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  hosts:
+    - host: timeoff-management.in10minutes.dev
+      paths:
+        - path: /
+          pathType: Prefix
+#  tls:
+#    - secretName: timeoff-management-in10minutes-dev-tls
+#      hosts:
+#        - timeoff-management.in10minutes.dev
+
+ingresscf:
+  enabled: true
+  ingressClassName: nginx
+  annotations:
+    cert-manager.io/issuer: cloudflare-minube-cr
+    cert-manager.io/issuer-kind: OriginIssuer
+    cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
+  hosts:
+    - host: timeoff-management.minube.cr
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: timeoff-management-minube-cr-tls
+      hosts:
+        - timeoff-management.minube.cr
+resources:
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 256Mi
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 80

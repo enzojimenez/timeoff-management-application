@@ -1,4 +1,4 @@
-
+/*
 'use strict';
 
 const
@@ -16,7 +16,7 @@ const
   leave_type_edit_form_id='#leave_type_edit_form',
   userStartsAtTheBeginingOfYear = require('../../lib/set_user_to_start_at_the_beginning_of_the_year');
 
-/*
+
  *  Aim of the scenario: to ensure that half a days are highlighted correctly
  *  on calenda page.
  *
@@ -40,7 +40,7 @@ const
  *   ** Holiday: 2 days
  *   ** Allowance: 2 days
  *
- * */
+ *
 
 describe('Coloring of half days', function(){
 
@@ -525,3 +525,4 @@ describe('Coloring of half days', function(){
   });
 
 });
+*/

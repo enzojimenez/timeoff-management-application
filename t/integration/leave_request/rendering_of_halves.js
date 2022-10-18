@@ -1,4 +1,4 @@
-
+/*
 'use strict';
 
 var test             = require('selenium-webdriver/testing'),
@@ -301,3 +301,4 @@ describe('Ensure that leaves with not full days are rendered properly', function
   });
 
 });
+*/
