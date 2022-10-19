@@ -1,3 +1,5 @@
+# GitHub Action - GL
+[![app-time](https://github.com/enzojimenez/timeoff-management-application/actions/workflows/time.yaml/badge.svg)](https://github.com/enzojimenez/timeoff-management-application/actions/workflows/time.yaml)
 
 # TimeOff.Management
 
